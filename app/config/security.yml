@@ -22,3 +22,18 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+
+        secured_area:
+            pattern: ^/
+            form_login:
+                check_path: _security_check
+                login_path: /my-login-url
+            logout:
+                path: _demo_logout
+                target: _demo
+            anonymous: ~        
+
+
+    access_control:
+        - { path: ^/new, roles: ROLE_USER }
+        - { path: ^/create, roles: ROLE_USER }
