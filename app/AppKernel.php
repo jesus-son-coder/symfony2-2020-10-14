@@ -2,6 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Yoda\UserBundle\UserBundle;
 
 class AppKernel extends Kernel
 {
@@ -18,6 +19,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Yoda\EventBundle\EventBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new UserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
