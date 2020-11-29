@@ -9,24 +9,11 @@
                 Events from a Galaxy, far far away
             {%- endif -%}
         </title>
+        <link rel="stylesheet" href="./bundles/event/css/event.css" />
+        <link rel="stylesheet" href="./bundles/event/css/main.css" />
+        <link rel="stylesheet" href="./bundles/event/css/main.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        {% block stylesheets %}
-            {% stylesheets
-                'bundles/event/css/event.css'
-                'bundles/event/css/events.css'
-                'bundles/event/css/main.css'
-            %}
-            {# 
-            {% stylesheets
-                'bundles/event/css/event.css'
-                'bundles/event/css/events.css'
-                'bundles/event/css/main.css'
-                filter='cssrewrite'
-            %}
-            #}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
-        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>

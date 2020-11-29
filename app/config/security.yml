@@ -3,7 +3,8 @@
 security:
 
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Yoda\UserBundle\Entity\User: bcrypt
+        # Symfony\Component\Security\Core\User\User: plaintext
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
@@ -11,25 +12,31 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: 
-                users:
-                    user: { password: userpass, roles: ['ROLE_USER'] }
-                    admin: { password: adminpass, roles: ['ROLE_ADMIN'] }
+        our_database_users:
+            entity:
+                class: UserBundle:User
+                property: username
+    
+        # in_memory:
+        #    memory: 
+        #        users:
+        #            user: { password: userpass, roles: ['ROLE_USER'] }
+        #            admin: { password: adminpass, roles: ['ROLE_ADMIN'] }
 
 
     firewalls:
         secured_area:
             pattern: ^/
             form_login:
-                check_path: _security_check
-                login_path: /my-login-url
+                check_path: login_check
+                login_path: login_form
             logout:
-                path: _demo_logout
-                target: _demo
+                path: logout
+                target: event
             anonymous: ~        
 
 
     access_control:
-        - { path: ^/new, roles: ROLE_USER }
-        - { path: ^/create, roles: ROLE_USER }
+    # Putting security access control in the controller instead :
+#        - { path: ^/new, roles: ROLE_USER }
+#        - { path: ^/create, roles: ROLE_USER }

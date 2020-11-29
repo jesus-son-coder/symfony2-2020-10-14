@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+    <style>
+        section {
+            margin-top: 100px;
+        }
+
+        .error {
+            background-color: red;
+            color: white;
+            padding: 2px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+        }
+
+        .label-form {
+            font-size: 18px;
+        }
+    </style>
+
+    <section class="login col-xs-12">
+        <article class="col-xs-12 text-center">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% if error %}
+                <div class="error">{{ error.message }}</div>
+            {% endif %}
+
+            <form action="{{ path('login_check') }}" method="post">
+                <div class="form form-group">
+                    <label for="username" class="label-form" style="color:white">Username:</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}"  class="form-control"  />
+                </div>
+                <br/>
+                <div class="form form-group">
+                    <label for="password" class="label-form" style="color:white">Password</label>
+                    <input type="password" id="password" name="_password"  class="form-control"  />
+                </div>
+
+                <button type="submit" class="btn btn-primary">login</button>
+
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+        </article>
+    </section>
+{% endblock %}
