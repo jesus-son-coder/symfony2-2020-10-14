@@ -18,7 +18,8 @@
             {% for entity in entities %}
                 <article>
                     <header class="map-container">
-                        <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ entity.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false" />
+                        <!--<img src="http://maps.googleapis.com/maps/api/staticmap?center={{ entity.location | url_encode }}&markers=color:red%7Ccolor:red%7C{{ entity.location | url_encode }}&zoom=14&size=150x150&maptype=roadmap&sensor=false&key=AIzaSyAuwd5unHZnInjGb5LJzajnxTcWCLsJd6I" />-->
+                        <img src="http://maps.googleapis.com/maps/api/staticmap?center=40.714%2c%20-73.998&zoom=14&size=150x150&maptype=roadmap&sensor=false&key=AIzaSyAuwd5unHZnInjGb5LJzajnxTcWCLsJd6I" />
                     </header>
                     <section>
                         <h3>
