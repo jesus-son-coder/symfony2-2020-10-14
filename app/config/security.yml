@@ -15,7 +15,7 @@ security:
         our_database_users:
             entity:
                 class: UserBundle:User
-                property: username
+#                property: username
     
         # in_memory:
         #    memory: 
