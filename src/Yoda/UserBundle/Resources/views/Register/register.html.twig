@@ -18,7 +18,9 @@
                 <h1>Register</h1>
 
                 <form action="{{ path('user_register') }}" method="POST" >
-                    {{ form_widget(form) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.password) }}
 
                     <input id="register_submit" type="submit" class="btn btn-primary" value="Inscrivez-vous !">
                 </form>
