@@ -17,13 +17,13 @@ class LoadUsers implements FixtureInterface, ContainerAwareInterface
         $user->setUsername('marco');
         $user->setPassword($this->encodePassword($user, 'userpass'));
         $user->setEmail('marco@starwar.com');
-        $user->setIsActive(false);
+        $user->setIsActive(true);
         $manager->persist($user);
 
         $admin = new User();
         $admin->setUsername('wayne');
         $admin->setPassword($this->encodePassword($admin, 'adminpass'));
-        $user->setEmail('wayne@starwar.com');
+        $admin->setEmail('wayne@starwar.com');
         $admin->setRoles(array('ROLE_ADMIN'));
         $admin->setIsActive(true);
         $manager->persist($admin);
