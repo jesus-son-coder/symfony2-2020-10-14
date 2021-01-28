@@ -3,6 +3,7 @@
 namespace Yoda\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -13,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="Yoda\UserBundle\Repository\UserRepository")
  */
 // class User implements UserInterface
-class User implements AdvancedUserInterface
+class User implements AdvancedUserInterface, Serializable
 {
     /**
      * @var int
@@ -200,6 +201,26 @@ class User implements AdvancedUserInterface
         $this->email = $email;
 
         return $this;
+    }
+
+    // Covnertir l'objet User au format String :
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+        ));
+    }
+
+    // Reconvertir le format String en objet User :
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+        ) = unserialize($serialized)
     }
 }
 
