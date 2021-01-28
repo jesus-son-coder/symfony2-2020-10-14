@@ -216,11 +216,11 @@ class User implements AdvancedUserInterface, Serializable
     // Reconvertir le format String en objet User :
     public function unserialize($serialized)
     {
-        list(
+        return list(
             $this->id,
             $this->username,
             $this->password,
-        ) = unserialize($serialized)
+        ) = unserialize($serialized);
     }
 }
 
