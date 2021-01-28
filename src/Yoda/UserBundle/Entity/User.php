@@ -31,6 +31,13 @@ class User implements AdvancedUserInterface
      */
     private $username;
 
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
+
     /**
      * @var string
      *
@@ -44,7 +51,7 @@ class User implements AdvancedUserInterface
     private $roles = array();
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isActive = true;
 
@@ -174,5 +181,25 @@ class User implements AdvancedUserInterface
         return $this->getIsActive();
     }
 
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 }
 
