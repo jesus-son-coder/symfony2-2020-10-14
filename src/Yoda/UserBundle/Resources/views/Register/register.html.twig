@@ -1,0 +1,29 @@
+{%  extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="./bundles/user/css/login.css" />
+
+    <style>
+        input[type="submit"]#register_submit {
+            margin-top: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <section class="login">
+            <article>
+                <h1>Register</h1>
+
+                <form action="{{ path('user_register') }}" method="POST" >
+                    {{ form_widget(form) }}
+
+                    <input id="register_submit" type="submit" class="btn btn-primary" value="Inscrivez-vous !">
+                </form>
+            </article>
+        </section>
+    </div>
+
+{% endblock %}
