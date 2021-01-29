@@ -56,6 +56,10 @@ class User implements AdvancedUserInterface, Serializable
      */
     private $isActive = true;
 
+
+    private $plainPassword;
+
+
     /**
      * Get id
      *
@@ -133,7 +137,7 @@ class User implements AdvancedUserInterface, Serializable
 
     public function eraseCredentials()
     {
-
+      $this->plainPassword = null;
     }
 
     public function getSalt()
@@ -222,5 +226,23 @@ class User implements AdvancedUserInterface, Serializable
             $this->password,
         ) = unserialize($serialized);
     }
+
+  /**
+   * @return mixed
+   */
+  public function getPlainPassword()
+  {
+    return $this->plainPassword;
+  }
+
+  /**
+   * @param mixed $plainPassword
+   */
+  public function setPlainPassword($plainPassword)
+  {
+    $this->plainPassword = $plainPassword;
+  }
+
+
 }
 
