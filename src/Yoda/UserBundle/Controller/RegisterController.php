@@ -6,14 +6,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Yoda\UserBundle\Entity\User;
 
 class RegisterController extends Controller
 {
-    /**
-     * @Route("/register", name="user_register")
-     * @Template
-     */
-    public function registerAction()
+  /**
+   * @Route("/register", name="user_register")
+   * @Template
+   * @param Request $request
+   * @return array
+   */
+    public function registerAction(Request $request)
     {
         $form = $this->createFormBuilder()
             ->add('username','text')
@@ -23,6 +26,14 @@ class RegisterController extends Controller
             ))
             ->getForm()
         ;
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+          $data = $form->getData();
+          $user = new User();
+          $user->setUsername($data['username']);
+          $user->setEmail($data['email']);
+        }
 
         return array('form' => $form->createView());
     }

@@ -18,13 +18,18 @@
                 <h1>Register</h1>
 
                 <form action="{{ path('user_register') }}" method="POST" >
-                    <div class="awesome-username-wrapper">
-                        {{ form_errors(form.username) }}
-                        {{ form_label(form.username) }}
-                        {{ form_widget(form.username) }}
-                    </div>
+                    {{ form_errors(form) }}
+
+                    {{ form_row(form.username) }}
                     {{ form_row(form.email) }}
-                    {{ form_row(form.password) }}
+                    {{ form_row(form.password.first, {
+                        label: 'Password'
+                    }) }}
+                    {{ form_row(form.password.second, {
+                        label: 'Repeat Password'
+                    }) }}
+
+                    {{ form_rest(form) }}
 
                     <input id="register_submit" type="submit" class="btn btn-primary" value="Inscrivez-vous !">
                 </form>
